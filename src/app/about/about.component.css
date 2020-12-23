@@ -1,0 +1,20 @@
+a {
+    text-decoration: none;
+}
+
+.main{
+    height: 150vh;
+}
+
+.textDiv {
+    float: right;
+    padding-left: 0%;
+    padding-right: 3%;
+    padding-top: 1%;
+    width: 75%;
+}
+
+.listDiv {
+    float: left;
+    width: 20%;
+}

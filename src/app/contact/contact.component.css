@@ -1,0 +1,60 @@
+.main {
+  height: 100vh;
+}
+
+.contact-form {
+  min-width: 40%;
+  max-width: 60%;
+  width: 100%;
+  padding: 5%;
+  margin: auto;
+}
+
+.contact-name {
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.contact-email {
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.contact-suggestion {
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+
+.contact-message {
+  width: 100%;
+}
+
+.buttonRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitButton {
+  width: 30%;
+  color: black;
+}
+
+.report-header {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reportsContainer {
+  margin-top: 2%;
+}
+
+mat-expansion-panel {
+  margin-left: 5%;
+  margin-right: 5%;
+}

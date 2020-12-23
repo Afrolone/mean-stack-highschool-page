@@ -1,0 +1,34 @@
+<div class = "main">
+  <div class = "spinnerContainer" *ngIf="isLoading">
+    <mat-spinner *ngIf="isLoading" [diameter] = "180"></mat-spinner>
+    <h1 *ngIf="isLoading" >LOADING..</h1>
+  </div>
+  <!--
+    https://onestepwanderer.com/wp-content/uploads/2019/08/Hogwarts-Castle-Locations.jpg
+  -->
+  <mat-list class="mainList" *ngFor = "let item of alumni">
+      <mat-card class="alumnus-card">
+        <div class="card-header">
+          <mat-card-header>
+            <mat-card-title>{{item.name}}</mat-card-title>
+            <mat-card-subtitle>{{item.profession}}</mat-card-subtitle>
+          </mat-card-header>
+        </div>
+        <img class="image" mat-card-image [src]="item.imagePath" [alt]="item.title">
+        <mat-card-content>
+          <p>
+            {{item.bio}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions class="buttons">
+          <a mat-button [routerLink] = "['/alumni/edit', item.id]" >EDIT</a>
+          <button mat-button color="warn" (click)="onDelete(item.id)">DELETE</button>
+        </mat-card-actions>
+      </mat-card>
+  </mat-list>
+  <div class = "paginatorDiv">
+    <mat-paginator [length]="totalAlumni" [pageSize]="alumniPerPage" [pageSizeOptions]="pageSizeOptions" 
+    (page)="onChangedPage($event)" *ngIf="alumni.length > 0"></mat-paginator>
+  </div>
+</div>
+

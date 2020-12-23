@@ -1,0 +1,41 @@
+<div class = "main">
+  <div class = "spinnerContainer" *ngIf="isLoading">
+    <mat-spinner *ngIf="isLoading" [diameter] = "180"></mat-spinner>
+    <h1 *ngIf="isLoading" >LOADING..</h1>
+  </div>
+  <div class="gridContainer">
+    <mat-grid-list cols = "2" rowHeight="1.5:1">
+      <mat-grid-tile *ngFor= "let article of articles">
+        <mat-card class="card">
+          <mat-card-header>
+            <div mat-card-avatar class="header-image-container" >
+            <img class = "image-avatar" src="https://material.angular.io/assets/img/examples/shiba1.jpg">
+            </div>
+            <mat-card-title>{{article.title}}</mat-card-title>
+            <mat-card-subtitle>Author</mat-card-subtitle>
+          </mat-card-header>
+          <div class="article-image">
+            <img class = "image" [src]="article.imagePath" [alt]="article.title">
+          </div>
+          <mat-card-content>
+            <p>
+              {{article.content}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions class="buttons">
+            <a mat-button color="primary" [routerLink] = "['/news/view', article.id]">VIEW</a>
+            <a mat-button color="primary" [routerLink] = "['/news/edit', article.id]" *ngIf="userIsAuthenticated" >EDIT</a>
+            <button mat-button color="warn" (click)="onDelete(article.id)" *ngIf="userIsAuthenticated" >DELETE</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div class = spacerDiv>
+    
+  </div>
+  <div class = "paginatorDiv">
+    <mat-paginator [length]="totalArticles" [pageSize]="articlesPerPage" [pageSizeOptions]="pageSizeOptions" 
+    (page)="onChangedPage($event)" *ngIf="articles.length > 0"></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+.main {
+    height: 100vh;
+}  
+
+mat-form-field {
+    width: 100%;
+    height: 150%;
+}
+  
+mat-spinner {
+    margin: auto;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainSpan {
+    width:  30%;
+    height: 70%;
+    margin: 0 auto;
+    padding: 3em;
+}
+
+  

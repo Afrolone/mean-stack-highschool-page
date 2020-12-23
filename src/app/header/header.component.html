@@ -1,0 +1,63 @@
+<mat-toolbar class="mainToolbar" color = "primary">
+  <span class = "upperSpan">
+    <li>
+      <a routerLink="/">Home</a>
+    </li>
+  </span>
+  <span class="spacer"></span>
+
+  <!--
+    <ul>
+    <li *ngIf="userIsAuthenticated">
+      <a mat-button routerLink="/create" routerLinkActive="mat-accent">New Post</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Login</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+  -->
+
+  <ul class="list">
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/login" routerLinkActive="mat-accent">Log In</a>
+    </li>
+    <li *ngIf="!userIsAuthenticated">
+      <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Sign Up</a>
+    </li>
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>
+
+<mat-toolbar color="primary">
+  <span class = "ifspan">
+    <li *ngIf="isAlumni() && userIsAuthenticated">
+      <a mat-button routerLink="/alumni/create">New Alumni</a>
+    </li>
+    <li *ngIf="isNews() && userIsAuthenticated">
+      <a mat-button routerLink="/news/create">New Article</a>
+    </li>
+  </span>
+  <span class="spacer"></span>
+  <ul class="list">
+    <li>
+      <a mat-button routerLink="/news" routerLinkActive="mat-accent">News</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/alumni" routerLinkActive="mat-accent">Alumni</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/contact" routerLinkActive="mat-accent">Contact</a>
+    </li>
+    <li>
+      <a mat-button routerLink="/about" routerLinkActive="mat-accent">About</a>
+    </li>
+  </ul>
+</mat-toolbar>

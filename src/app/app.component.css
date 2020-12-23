@@ -1,0 +1,9 @@
+.background {
+    background-image: url("https://onestepwanderer.com/wp-content/uploads/2019/08/Hogwarts-Castle-Locations.jpg");
+    padding: 1%;
+}
+.everything {
+    margin: 0 auto;
+    width: 90%;
+    background-color: white;
+}

@@ -1,0 +1,33 @@
+.main {
+  height: 100vh;
+}
+.article-form {
+    min-width: 40%;
+    max-width: 60%;
+    width: 100%;
+    padding: 5%;
+    margin: auto;
+}
+
+.article-full-width {
+  width: 100%;
+}
+
+.buttonRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.image-preview {
+  height: 5rem;
+  margin: 1rem 0;
+}
+
+.image-preview img {
+  height: 100%;
+}

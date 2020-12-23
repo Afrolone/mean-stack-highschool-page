@@ -1,0 +1,82 @@
+<div class = "main">
+  <div class="contact-form">
+    
+    <mat-form-field class="contact-name">
+      <mat-label>Your name</mat-label>
+      <input matInput placeholder="nameMan" value="Name Surname">
+    </mat-form-field>
+    
+    <br>
+    
+    <mat-form-field class="contact-email">
+      <mat-label>Your email</mat-label>
+      <input matInput placeholder="emailMan" value="bla_hri@grimail.com">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill" class="contact-suggestion">
+      <mat-label>Your suggestion</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion.value">
+          {{suggestion.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+  
+    <mat-form-field class="contact-message">
+      <mat-label>Leave your message</mat-label>
+      <textarea matInput rows="4" placeholder="Your page is so awesome..."></textarea>
+    </mat-form-field>
+    <div class="buttonRow">
+      <button class = "submitButton" mat-button>Submit</button>
+    </div>
+  </div>
+  <div class="reports-div" *ngIf="userIsAuthenticated">
+    <h1 class="report-header">Reports</h1>
+    <div class = "reportsContainer">
+      <mat-accordion>
+        <mat-expansion-panel hideToggle multi = "true" *ngFor = "let report of reports">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ report.name }}
+            </mat-panel-title>
+            <mat-panel-description>
+              {{ report.type }}
+            </mat-panel-description>
+            <mat-panel-description>
+              {{ report.email }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>{{ report.message }}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>
+<!--
+  <div class="main">
+  <mat-form-field appearance="fill">
+    <mat-label>Input</mat-label>
+    <input matInput>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Select</mat-label>
+    <mat-select>
+      <mat-option value="option">Option</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Textarea</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+</div>
+-->
+
+
+
+
