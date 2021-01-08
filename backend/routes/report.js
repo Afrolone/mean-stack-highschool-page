@@ -1,18 +1,20 @@
 const express = require("express");
 const Report = require('../models/report');
-const router = express.Router();
 const checkAuth = require("../middleware/check-auth");
-const { RaceOperator } = require("rxjs/internal/observable/race");
-
+const router = express.Router();
 
 // POST 
-router.post("", checkAuth, (req, res, next) => {
+router.post("", (req, res, next) => {
     const report = new Report({
         name: req.body.name,
         email: req.body.email,
         type: req.body.type,
         message: req.body.message
     });
+    console.log("REQQQ");
+    console.log(req);
+    console.log("REPOORT");
+    console.log(report);
 
     console.log("report added on the backend");
 
@@ -39,30 +41,6 @@ router.get("", (req, res, next) => {
         });
 });
 
-/*
-router.put(
-    "/:id",
-    checkAuth,
-    multer({ storage: storage }).single("image"), 
-    (req, res, next) => {
-        let imagePath = req.body.imagePath;
-        if (req.file) {
-          const url = req.protocol + "://" + req.get("host");
-          imagePath = url + "/images/" + req.file.filename;
-    }
-    const alumnus = new Alumnus({
-        _id: req.body.id,
-        name: req.body.name,
-        profession: req.body.profession,
-        bio: req.body.bio
-    });
-    Alumnus.updateOne({ _id: req.params.id }, alumnus).then(result => {
-        console.log(result);
-        res.status(200).json({ message: "Update successful!" });
-    });
-});
-*/
-
 // PUT (one)
 router.put("/:id", checkAuth, (req, res, next) => {
     const report = new Report({
@@ -75,9 +53,27 @@ router.put("/:id", checkAuth, (req, res, next) => {
     Report.updateOne({ _id: req.params.id }, RaceOperator).then(result => {
         console.log(result);
         res.status(200).json({ message: "Update successful!"});
-    })
+    });
 });
 
 // GET (one) @TODO
+router.get("/:id", (req, res, next) => {
+    Report.findById(req.params.id).then(report => {
+        if (report) {
+            res.status(200).json(alumnus);
+        } else {
+            res.status(404).json({ message: "Alumnus not found!" });
+        }
+    });
+});
 
 // DELETE (one) @TODO
+router.delete("/:id", checkAuth, (req, res, next) => {
+    Report.deleteOne({ _id: req.params.id })
+        .then(result => {
+            console.log(result);
+            res.status(200).json({ message: 'Report deleted'});
+        });
+});
+
+module.exports = router;

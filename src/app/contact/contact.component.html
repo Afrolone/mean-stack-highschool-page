@@ -1,23 +1,27 @@
 <div class = "main">
-  <div class="contact-form">
+  <form class="contact-form" [formGroup] = "form" (submit)="onSaveReport()">
     
     <mat-form-field class="contact-name">
       <mat-label>Your name</mat-label>
-      <input matInput placeholder="nameMan" value="Name Surname">
+      <input 
+      matInput
+      placeholder="nameMan"
+      formControlName = "name" 
+      value="Name Surname">
     </mat-form-field>
     
     <br>
     
     <mat-form-field class="contact-email">
       <mat-label>Your email</mat-label>
-      <input matInput placeholder="emailMan" value="bla_hri@grimail.com">
+      <input matInput placeholder="emailMan" formControlName = "email" value="bla_hri@grimail.com">
     </mat-form-field>
 
     <br>
 
     <mat-form-field appearance="fill" class="contact-suggestion">
       <mat-label>Your suggestion</mat-label>
-      <mat-select>
+      <mat-select matInput formControlName = "type">
         <mat-option *ngFor="let suggestion of suggestions" [value]="suggestion.value">
           {{suggestion.value}}
         </mat-option>
@@ -28,12 +32,12 @@
   
     <mat-form-field class="contact-message">
       <mat-label>Leave your message</mat-label>
-      <textarea matInput rows="4" placeholder="Your page is so awesome..."></textarea>
+      <textarea matInput rows="4" formControlName = "message" placeholder="Your page is so awesome..."></textarea>
     </mat-form-field>
     <div class="buttonRow">
-      <button class = "submitButton" mat-button>Submit</button>
+      <button mat-button type="submit">Submit</button>
     </div>
-  </div>
+  </form>
   <div class="reports-div" *ngIf="userIsAuthenticated">
     <h1 class="report-header">Reports</h1>
     <div class = "reportsContainer">
@@ -51,31 +55,12 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <p>{{ report.message }}</p>
+          <button mat-button color="warn" (click)="onDelete(report.id)">DELETE</button>
         </mat-expansion-panel>
       </mat-accordion>
     </div>
   </div>
 </div>
-<!--
-  <div class="main">
-  <mat-form-field appearance="fill">
-    <mat-label>Input</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Select</mat-label>
-    <mat-select>
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <br>
-  <mat-form-field appearance="fill">
-    <mat-label>Textarea</mat-label>
-    <textarea matInput></textarea>
-  </mat-form-field>
-</div>
--->
 
 
 
